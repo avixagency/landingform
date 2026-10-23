@@ -1,0 +1,53 @@
+/* ============================================================
+   AVIX — Tokens complementares
+   Valores que a landing usa direto no styles.css e que não
+   existiam em colors_and_type.css. Só define variáveis: não
+   altera nenhum seletor da página principal.
+   ============================================================ */
+@import url('./colors_and_type.css');
+
+:root {
+  /* Cores */
+  --color-cobalt-hover:   #1D5CF5;
+  --color-surface-deep:   #070A1F;
+  --fg-label:             #C7C7D1;
+  --color-error:          #F87171;
+  --color-error-bg:       rgba(248, 113, 113, 0.08);
+  --color-error-border:   rgba(248, 113, 113, 0.35);
+  --color-success:        #34D399;
+  --color-success-bg:     rgba(52, 211, 153, 0.10);
+  --color-success-border: rgba(52, 211, 153, 0.35);
+
+  /* Superfícies e bordas de formulário */
+  --input-bg:             rgba(255, 255, 255, 0.04);
+  --input-bg-focus:       rgba(11, 75, 239, 0.08);
+  --input-border:         rgba(255, 255, 255, 0.12);
+  --btn-ghost-bg:         rgba(255, 255, 255, 0.05);
+  --btn-ghost-bg-hover:   rgba(255, 255, 255, 0.09);
+  --btn-ghost-border:     rgba(255, 255, 255, 0.14);
+  --btn-ghost-border-hover: rgba(255, 255, 255, 0.25);
+  --gradient-card:        linear-gradient(160deg, #0A0F2E, #070A1F);
+
+  /* Raios usados de fato na landing */
+  --radius-btn:           9px;
+  --radius-btn-lg:        10px;
+  --radius-input:         10px;
+  --radius-card-lg:       22px;
+
+  /* Sombras e foco */
+  --shadow-btn-primary:       0 6px 28px rgba(11, 75, 239, 0.45);
+  --shadow-btn-primary-hover: 0 8px 34px rgba(11, 75, 239, 0.6);
+  --shadow-card-lg:           0 30px 80px rgba(0, 0, 0, 0.5);
+  --ring-focus:               0 0 0 4px rgba(11, 75, 239, 0.18);
+
+  /* Tipografia de UI */
+  --text-label:     0.78125rem; /* 12.5px */
+  --tracking-title: -0.02em;
+
+  /* Layout */
+  --container-max:  1200px;
+  --gutter-mobile:  22px;
+  --gutter-desktop: 48px;
+  --tap-min:        48px;
+  --ease-out:       cubic-bezier(.16, 1, .3, 1);
+}

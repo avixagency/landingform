@@ -1,0 +1,250 @@
+/* ============================================================
+   AVIX DESIGN SYSTEM — Colors & Typography
+   Avix Agency | 2025
+   ============================================================ */
+
+/* ── Google Fonts (Poppins) ── */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ── Fontshare (Satoshi) — closest Google Fonts fallback: Plus Jakarta Sans ── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap');
+
+/* ── Base Satoshi via Fontshare CDN ── */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap');
+
+/* ── JetBrains Mono (mono / code) via Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ============================================================
+   COLOR TOKENS — Base Palette
+   ============================================================ */
+:root {
+  /* Brand primaries */
+  --color-midnight:       #040716;   /* Primary background */
+  --color-cobalt:         #0B4BEF;   /* Primary brand blue, CTAs */
+  --color-cyan:           #00ADF0;   /* Secondary accent, glows */
+  --color-violet:         #5B0BE9;   /* Tertiary accent, gradient start */
+  --color-soft-white:     #E8E7E7;   /* Body text on dark, surfaces */
+
+  /* Neutrals */
+  --color-white:          #FFFFFF;
+  --color-black:          #000000;
+  --color-gray-100:       #F5F5F6;
+  --color-gray-200:       #E8E7E7;   /* = soft white */
+  --color-gray-400:       #9A9AA8;
+  --color-gray-600:       #5A5A6E;
+  --color-gray-800:       #1A1C30;
+  --color-gray-900:       #0D0F22;
+
+  /* Surface / Card tones */
+  --color-surface-dark:   rgba(255, 255, 255, 0.04);
+  --color-surface-mid:    rgba(255, 255, 255, 0.08);
+  --color-surface-card:   #0A0F2E;
+  --color-border-subtle:  rgba(255, 255, 255, 0.08);
+  --color-border-accent:  rgba(11, 75, 239, 0.4);
+
+  /* ── Semantic color aliases ── */
+  --bg-page:              var(--color-midnight);
+  --bg-section-alt:       var(--color-gray-900);
+  --bg-card:              var(--color-surface-card);
+  --bg-card-hover:        rgba(11, 75, 239, 0.08);
+
+  --fg-primary:           var(--color-white);
+  --fg-secondary:         var(--color-soft-white);
+  --fg-muted:             var(--color-gray-400);
+  --fg-inverse:           var(--color-midnight);
+
+  --accent-primary:       var(--color-cobalt);
+  --accent-secondary:     var(--color-cyan);
+  --accent-tertiary:      var(--color-violet);
+
+  --border-default:       var(--color-border-subtle);
+  --border-accent:        var(--color-border-accent);
+
+  /* Gradients */
+  --gradient-brand:       linear-gradient(135deg, #5B0BE9 0%, #0B4BEF 50%, #00ADF0 100%); /* @kind color */
+  --gradient-cobalt-cyan: linear-gradient(135deg, #0B4BEF 0%, #00ADF0 100%); /* @kind color */
+  --gradient-violet-blue: linear-gradient(135deg, #5B0BE9 0%, #0B4BEF 100%); /* @kind color */
+  --gradient-hero-bg:     radial-gradient(ellipse at 60% 40%, rgba(11,75,239,0.25) 0%, rgba(4,7,22,0) 70%),
+                          radial-gradient(ellipse at 20% 80%, rgba(0,173,240,0.15) 0%, rgba(4,7,22,0) 60%);
+  --gradient-glow-cobalt: radial-gradient(circle, rgba(11,75,239,0.4) 0%, transparent 70%); /* @kind color */
+  --gradient-glow-cyan:   radial-gradient(circle, rgba(0,173,240,0.4) 0%, transparent 70%); /* @kind color */
+
+  /* Glow / Shadow system */
+  --shadow-glow-cobalt:   0 0 40px rgba(11, 75, 239, 0.35);
+  --shadow-glow-cyan:     0 0 30px rgba(0, 173, 240, 0.4);
+  --shadow-glow-violet:   0 0 30px rgba(91, 11, 233, 0.4);
+  --shadow-card:          0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-button:        0 4px 20px rgba(11, 75, 239, 0.5);
+}
+
+/* ============================================================
+   SPACING TOKENS
+   ============================================================ */
+:root {
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* Border radius */
+  --radius-sm:    4px;   /* tags, badges */
+  --radius-md:    8px;   /* buttons, inputs */
+  --radius-lg:    12px;  /* cards, panels */
+  --radius-xl:    16px;  /* hero cards */
+  --radius-pill:  9999px; /* chips, pills */
+
+  /* Breakpoints (reference) */
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}
+
+/* ============================================================
+   TYPOGRAPHY TOKENS
+   ============================================================ */
+:root {
+  /* Font families */
+  --font-display:   'Satoshi', 'Plus Jakarta Sans', 'Poppins', sans-serif;
+  --font-body:      'Poppins', sans-serif;
+  --font-mono:      'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* Font sizes — fluid scale */
+  --text-xs:    0.75rem;   /* 12px */
+  --text-sm:    0.875rem;  /* 14px */
+  --text-base:  1rem;      /* 16px */
+  --text-md:    1.125rem;  /* 18px */
+  --text-lg:    1.25rem;   /* 20px */
+  --text-xl:    1.5rem;    /* 24px */
+  --text-2xl:   1.875rem;  /* 30px */
+  --text-3xl:   2.25rem;   /* 36px */
+  --text-4xl:   3rem;      /* 48px */
+  --text-5xl:   3.75rem;   /* 60px */
+  --text-6xl:   4.5rem;    /* 72px */
+
+  /* Font weights */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    900;
+
+  /* Line heights */
+  --leading-tight:  1.1;
+  --leading-snug:   1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed:1.65;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.03em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.06em;
+  --tracking-wider:   0.12em;
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES
+   ============================================================ */
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 6vw, var(--text-6xl));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-primary);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-primary);
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+  color: var(--fg-primary);
+}
+
+h4, .h4 {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-normal);
+  color: var(--fg-primary);
+}
+
+p, .body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-secondary);
+}
+
+.body-lg {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-secondary);
+}
+
+.body-sm {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-muted);
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.cta {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-primary);
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--accent-secondary);
+}
+
+/* Accent / highlight text */
+.text-accent   { color: var(--accent-secondary); }   /* cyan highlight */
+.text-cobalt   { color: var(--accent-primary); }
+.text-violet   { color: var(--accent-tertiary); }
+.text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

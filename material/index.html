@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Material gratuito | Avix</title>
+<meta name="description" content="Receba o material da Avix direto no seu WhatsApp.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="icon" href="/assets/AvixLogoOnly.png">
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/material/material.css">
+</head>
+<body>
+<header class="m-top">
+  <img src="/assets/AvixLetteringWhite.png" alt="Avix" class="m-logo">
+</header>
+
+<main class="m-main">
+  <div class="m-grid" id="layout">
+    <!-- Bloco da isca -->
+    <section class="m-isca" id="isca" aria-live="polite" aria-busy="true">
+      <div class="m-skel" id="skeleton">
+        <div class="sk sk-img"></div>
+        <div class="sk sk-title"></div>
+        <div class="sk sk-title sk-short"></div>
+        <div class="sk sk-line"></div>
+        <div class="sk sk-line sk-short"></div>
+        <div class="sk sk-bullet"></div>
+        <div class="sk sk-bullet"></div>
+        <div class="sk sk-bullet"></div>
+      </div>
+      <div class="m-isca-body" id="isca-body" hidden>
+        <img class="m-isca-img" id="isca-img" alt="" hidden>
+        <h1 class="m-title" id="isca-titulo"></h1>
+        <p class="m-sub" id="isca-subtitulo"></p>
+        <ul class="m-bullets" id="isca-bullets"></ul>
+      </div>
+    </section>
+
+    <!-- Formulário -->
+    <section class="m-card" id="form-card" hidden>
+      <form id="lead-form" novalidate>
+        <div class="fld" data-field="nome">
+          <label class="fld-label" for="f-nome">Nome</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+          <p class="fld-err" id="e-nome" aria-live="polite"></p>
+        </div>
+        <div class="fld" data-field="empresa">
+          <label class="fld-label" for="f-empresa">Empresa</label>
+          <input id="f-empresa" name="empresa" type="text" autocomplete="organization" required>
+          <p class="fld-err" id="e-empresa" aria-live="polite"></p>
+        </div>
+        <div class="fld" data-field="cargo">
+          <label class="fld-label" for="f-cargo">Cargo</label>
+          <input id="f-cargo" name="cargo" type="text" autocomplete="organization-title" required>
+          <p class="fld-err" id="e-cargo" aria-live="polite"></p>
+        </div>
+        <div class="fld" data-field="whatsapp">
+          <label class="fld-label" for="f-whatsapp">WhatsApp</label>
+          <input id="f-whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(15) 99999-8888" maxlength="15" required>
+          <p class="fld-err" id="e-whatsapp" aria-live="polite"></p>
+        </div>
+        <div class="fld" data-field="leads_mes">
+          <label class="fld-label" for="f-leads">Quantos leads você recebe por mês?</label>
+          <select id="f-leads" name="leads_mes" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="ate-30">Até 30</option>
+            <option value="30-80">30 a 80</option>
+            <option value="80-150">80 a 150</option>
+            <option value="150-mais">Mais de 150</option>
+          </select>
+          <p class="fld-err" id="e-leads_mes" aria-live="polite"></p>
+        </div>
+        <div class="fld fld-check" data-field="consentimento">
+          <label class="check">
+            <input id="f-consent" name="consentimento" type="checkbox" required>
+            <span>Aceito receber o material e o contato da AVIX no WhatsApp</span>
+          </label>
+          <p class="fld-err" id="e-consentimento" aria-live="polite"></p>
+        </div>
+
+        <!-- Honeypot: fora da tela, sem display:none -->
+        <div class="hp-wrap" aria-hidden="true">
+          <label for="f-hp">Não preencha este campo</label>
+          <input id="f-hp" name="hp" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="m-send-err" id="send-err" role="alert" hidden>
+          <p>Não conseguimos enviar agora. Verifique sua conexão.</p>
+          <button type="button" class="btn btn-ghost btn-block" id="retry">Tentar de novo</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="submit">
+          <span class="spinner" aria-hidden="true"></span>
+          <span class="btn-tx">Receber no meu WhatsApp</span>
+        </button>
+        <p class="m-micro">O material chega no seu WhatsApp em instantes.</p>
+      </form>
+
+      <div class="m-success" id="success" hidden tabindex="-1">
+        <div class="m-success-ic" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <p class="m-success-tx">Seu material está chegando no seu WhatsApp agora.</p>
+        <a class="btn btn-ghost btn-block" id="wa-link" href="#" target="_blank" rel="noopener">Não chegou? Chamar no WhatsApp</a>
+      </div>
+    </section>
+
+    <!-- Escolha de material (isca não encontrada) -->
+    <section class="m-choose" id="choose" hidden>
+      <h1 class="m-title">Escolha seu material</h1>
+      <p class="m-sub">Selecione um dos materiais abaixo para receber no seu WhatsApp.</p>
+      <div class="m-cards" id="choose-list"></div>
+      <p class="m-sub" id="choose-empty" hidden>Nenhum material disponível no momento.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="m-foot">
+  <span>AVIX Agency</span>
+  <a id="privacy-link" href="#">Política de privacidade</a>
+</footer>
+
+<script src="/material/config.js"></script>
+<script src="/material/material.js"></script>
+</body>
+</html>
