@@ -234,7 +234,8 @@
   }
 
   /* ── Init ── */
-  $('privacy-link').href = CFG.POLITICA_URL || '#';
+  if (CFG.POLITICA_URL) $('privacy-link').href = CFG.POLITICA_URL;
+  else $('privacy-link').hidden = true;
   if (MOCK) console.info('[AVIX] Modo mock ativo (?mock=1). Nenhuma chamada real ao n8n.');
   loadIsca();
 })();
