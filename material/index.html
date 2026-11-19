@@ -9,13 +9,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="preconnect" href="https://api.fontshare.com">
-<link rel="icon" href="/assets/AvixLogoOnly.png">
-<link rel="stylesheet" href="/tokens.css">
-<link rel="stylesheet" href="/material/material.css">
+<link rel="icon" href="/materiais/assets/AvixLogoOnly.png">
+<link rel="stylesheet" href="/materiais/tokens.css">
+<link rel="stylesheet" href="/materiais/material/material.css">
 </head>
 <body>
 <header class="m-top">
-  <img src="/assets/AvixLetteringWhite.png" alt="Avix" class="m-logo">
+  <img src="/materiais/assets/AvixLetteringWhite.png" alt="Avix" class="m-logo">
 </header>
 
 <main class="m-main">
@@ -52,6 +52,11 @@
           <label class="fld-label" for="f-empresa">Empresa</label>
           <input id="f-empresa" name="empresa" type="text" autocomplete="organization" required>
           <p class="fld-err" id="e-empresa" aria-live="polite"></p>
+        </div>
+        <div class="fld" data-field="email">
+          <label class="fld-label" for="f-email">E-mail (de preferência o da empresa)</label>
+          <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="254" required>
+          <p class="fld-err" id="e-email" aria-live="polite"></p>
         </div>
         <div class="fld" data-field="cargo">
           <label class="fld-label" for="f-cargo">Cargo</label>
@@ -124,7 +129,7 @@
   <a id="privacy-link" href="#">Política de privacidade</a>
 </footer>
 
-<script src="/material/config.js"></script>
-<script src="/material/material.js"></script>
+<script src="/materiais/material/config.js"></script>
+<script src="/materiais/material/material.js"></script>
 </body>
 </html>

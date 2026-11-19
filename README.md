@@ -6,4 +6,6 @@ Página de captura de iscas da AVIX (`/material`). Site estático, sem build, pu
 - `tokens.css` e `colors_and_type.css` tokens do design system da AVIX
 - `assets/` logos
 
-Testar sem o n8n: `/material?isca=calc-leads&mock=1` (extras: `&mock_delay=4000`, `&mock_post=erro`).
+Endereço público: `avixagency.com.br/materiais/<slug>` (proxy pelo projeto landingpageavix). Links antigos `/material?isca=<slug>` continuam funcionando.
+
+Testar sem o n8n: `/materiais/calc-leads?mock=1` (extras: `&mock_delay=4000`, `&mock_post=erro`).

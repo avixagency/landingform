@@ -2,9 +2,21 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/", "destination": "/material", "permanent": false }
+    { "source": "/", "destination": "/materiais", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/materiais/assets/:path*", "destination": "/assets/:path*" },
+    { "source": "/materiais/material/:path*", "destination": "/material/:path*" },
+    { "source": "/materiais/tokens.css", "destination": "/tokens.css" },
+    { "source": "/materiais/colors_and_type.css", "destination": "/colors_and_type.css" },
+    { "source": "/materiais", "destination": "/material/index.html" },
+    { "source": "/materiais/:slug", "destination": "/material/index.html" }
   ],
   "headers": [
+    {
+      "source": "/materiais/material/(.*)\\.(js|css)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }]
+    },
     {
       "source": "/material/(.*)\\.(js|css)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }]

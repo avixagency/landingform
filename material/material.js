@@ -3,7 +3,9 @@
   const CFG = window.AVIX_MATERIAL || {};
   const BASE = String(CFG.N8N_URL || '').replace(/\/+$/, '');
   const params = new URLSearchParams(location.search);
-  const slug = (params.get('isca') || '').trim();
+  /* Slug vem do caminho (/materiais/calc-leads) ou do ?isca= (links antigos) */
+  const pathSlug = (location.pathname.match(/^\/materiais\/([^/]+)\/?$/) || [])[1];
+  const slug = (pathSlug ? decodeURIComponent(pathSlug) : (params.get('isca') || '')).trim();
   const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
   const utms = {};
   UTM_KEYS.forEach(k => { utms[k] = params.get(k) || ''; });
@@ -54,8 +56,9 @@
   };
   function materialUrl(newSlug) {
     const p = new URLSearchParams(location.search);
-    p.set('isca', newSlug);
-    return location.pathname + '?' + p.toString();
+    p.delete('isca');
+    const qs = p.toString();
+    return '/materiais/' + encodeURIComponent(newSlug) + (qs ? '?' + qs : '');
   }
 
   /* ── Estados da isca ── */
@@ -171,16 +174,21 @@
   form.addEventListener('input', e => { const f = e.target.closest('[data-field]'); if (f && f.dataset.field !== 'whatsapp') clearErr(f.dataset.field); });
   form.addEventListener('change', e => { const f = e.target.closest('[data-field]'); if (f) clearErr(f.dataset.field); });
 
+  const EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i;
+
   function validate() {
     const errs = [];
     ['nome', 'empresa', 'cargo'].forEach(f => {
       if (!form.elements[f].value.trim()) errs.push([f, 'Preencha este campo.']);
     });
+    const email = form.elements.email.value.trim();
+    if (!email) errs.push(['email', 'Informe seu e-mail.']);
+    else if (!EMAIL_RE.test(email)) errs.push(['email', 'E-mail inválido. Ex.: nome@empresa.com.br']);
     if (!phone.value.trim()) errs.push(['whatsapp', 'Informe seu WhatsApp.']);
     else if (!normalizePhone(phone.value)) errs.push(['whatsapp', 'WhatsApp inválido. Use DDD + número, ex.: (15) 99999-8888.']);
     if (!form.elements.leads_mes.value) errs.push(['leads_mes', 'Selecione uma opção.']);
     if (!form.elements.consentimento.checked) errs.push(['consentimento', 'Marque para receber o material.']);
-    ['nome', 'empresa', 'cargo', 'whatsapp', 'leads_mes', 'consentimento'].forEach(clearErr);
+    ['nome', 'empresa', 'email', 'cargo', 'whatsapp', 'leads_mes', 'consentimento'].forEach(clearErr);
     errs.forEach(([f, m]) => setErr(f, m));
     if (errs.length) form.querySelector(`[data-field="${errs[0][0]}"] input, [data-field="${errs[0][0]}"] select`).focus();
     return !errs.length;
@@ -203,6 +211,7 @@
       isca: slug,
       nome: form.elements.nome.value.trim(),
       empresa: form.elements.empresa.value.trim(),
+      email: form.elements.email.value.trim().toLowerCase(),
       cargo: form.elements.cargo.value.trim(),
       whatsapp: normalizePhone(phone.value),
       leads_mes: form.elements.leads_mes.value,

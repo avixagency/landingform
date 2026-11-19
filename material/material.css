@@ -75,7 +75,7 @@ a { color: inherit; }
 
 .fld { display: flex; flex-direction: column; gap: var(--space-2); }
 .fld-label { font-size: var(--text-label); font-weight: var(--weight-semibold); color: var(--fg-label); }
-.fld input[type=text], .fld input[type=tel], .fld select {
+.fld input[type=text], .fld input[type=tel], .fld input[type=email], .fld select {
   width: 100%; min-height: var(--tap-min); padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-input); background: var(--input-bg); border: 1px solid var(--input-border);
   color: var(--fg-primary); font-family: var(--font-body); font-size: var(--text-base);
