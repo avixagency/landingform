@@ -178,7 +178,7 @@
 
   function validate() {
     const errs = [];
-    ['nome', 'empresa', 'cargo'].forEach(f => {
+    ['nome', 'empresa'].forEach(f => {
       if (!form.elements[f].value.trim()) errs.push([f, 'Preencha este campo.']);
     });
     const email = form.elements.email.value.trim();
@@ -188,7 +188,7 @@
     else if (!normalizePhone(phone.value)) errs.push(['whatsapp', 'WhatsApp inválido. Use DDD + número, ex.: (15) 99999-8888.']);
     if (!form.elements.leads_mes.value) errs.push(['leads_mes', 'Selecione uma opção.']);
     if (!form.elements.consentimento.checked) errs.push(['consentimento', 'Marque para receber o material.']);
-    ['nome', 'empresa', 'email', 'cargo', 'whatsapp', 'leads_mes', 'consentimento'].forEach(clearErr);
+    ['nome', 'empresa', 'email', 'whatsapp', 'leads_mes', 'consentimento'].forEach(clearErr);
     errs.forEach(([f, m]) => setErr(f, m));
     if (errs.length) form.querySelector(`[data-field="${errs[0][0]}"] input, [data-field="${errs[0][0]}"] select`).focus();
     return !errs.length;
@@ -212,7 +212,6 @@
       nome: form.elements.nome.value.trim(),
       empresa: form.elements.empresa.value.trim(),
       email: form.elements.email.value.trim().toLowerCase(),
-      cargo: form.elements.cargo.value.trim(),
       whatsapp: normalizePhone(phone.value),
       leads_mes: form.elements.leads_mes.value,
       consentimento: form.elements.consentimento.checked
