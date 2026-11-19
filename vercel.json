@@ -9,8 +9,8 @@
     { "source": "/materiais/material/:path*", "destination": "/material/:path*" },
     { "source": "/materiais/tokens.css", "destination": "/tokens.css" },
     { "source": "/materiais/colors_and_type.css", "destination": "/colors_and_type.css" },
-    { "source": "/materiais", "destination": "/material/index.html" },
-    { "source": "/materiais/:slug", "destination": "/material/index.html" }
+    { "source": "/materiais", "destination": "/material" },
+    { "source": "/materiais/:slug", "destination": "/material" }
   ],
   "headers": [
     {
